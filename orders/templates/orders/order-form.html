@@ -1,0 +1,6 @@
+<h1>Создание заказа</h1>
+<form action="{% url 'orders:order-form' %}" method='post'>
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Добавить заказ</button>
+</form>

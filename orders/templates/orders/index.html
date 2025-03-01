@@ -10,6 +10,27 @@
     <title>Меню заказов</title>
 </head>
 <body>
-
+    <nav class="navbar navbar-dark bg-dark">
+        <div class="container-fluid">
+            <form class="d-flex" role="search">
+                <div class='container'>
+                    <a href={% url "orders:index" %}><button class="btn  btn-primary">Добавить заказ</button></a>
+                    <button class="btn  btn-primary">Изменение заказа</button>
+                    <button class="btn  btn-primary">Все заказы</button>
+                    <button class="btn  btn-primary">Удалить заказ</button>
+                    <button class="btn  btn-primary">Выручка за смену</button>
+                    <span class="navbar-text">
+                        <a href="/api/v1/" class="navbar-text">API</a>
+                    </span>
+                </div>
+                <input class="form-control me-2" type="search" placeholder="Поиск заказа по столу или статусу" aria-label="Search" width: 1000px>
+                <button class="btn btn-outline-success" type="submit">Поиск</button>
+            </form>
+        </div>
+    </nav>
+    <main class="container">
+        {% block content %}
+        {% endblock %}
+    </main>
 </body>
 </html>

@@ -1,0 +1,10 @@
+<table border="1">
+    <th>Название блюда</th>
+    <th>Цена</th>
+    {% for item in items %}
+    <tr>
+        <td align="center">{{item.dish_name}}</td>
+        <td align="center">{{item.price}}</td>
+    </tr>
+    {% endfor %}
+</table>

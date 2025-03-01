@@ -1,0 +1,35 @@
+<h1>Список заказов</h1>
+{% comment %} <a href="{% url 'orders:order-form' %}">Создать заказ</a> {% endcomment %}
+
+<table border="1">    
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Номер стола</th>
+      <th>Блюда</th>
+      <th>Сумма</th>
+      <th>Статус</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% if orders %}
+        {% for order in orders %}
+          <tr>
+            <td><a href="{% url 'orders:order-detail' %}">{{order.id}}</a></td>
+            <td>{{order.table_number}}</td>
+            <td>
+              <ul>
+                  {% for item in order.items.all %}
+                      <li>{{ item.dish_name }} ({{ item.price }})</li>
+                  {% endfor %}
+              </ul>
+            </td>
+            <td>{{order.total_price}}</td>
+            <td>{{order.get_status_display}}</td>
+          </tr>
+        {% endfor %}
+    {% else %}
+      <tr><td colspan="5">Заказов нет.</td></tr>
+    {% endif %}
+  </tbody>
+</table>
