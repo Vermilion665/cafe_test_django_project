@@ -1,0 +1,51 @@
+.order {
+    padding: 30px;
+    text-align: center;
+    border-radius: 15px;
+    margin: 40px;
+    color: #ffffff;
+    backdrop-filter: blur(8px) saturate(100%) contrast(75%);
+    text-decoration: none;
+    box-shadow: rgba(73, 73, 73, 0.5) 0px 0px 15px 5px;
+    justify-self: center;
+
+  }
+
+#or-li {
+  text-align-last: justify;
+}
+
+#btn-link {
+    width: 100%;
+    text-align-last: center;
+}
+
+.my-custom-select, .my-custom-input, .my-custom-item-input {
+  border: var(--bs-border-width) solid var(--bs-border-color);
+  border-radius: var(--bs-border-radius);
+  padding: 0.01rem 0.50rem;
+  margin: 0 10px 0 10px;
+}
+
+.my-custom-input {
+  width: 100px;
+}
+
+#btn-suc {
+  --bs-btn-padding-y: 0.02rem;
+}
+
+.form-control {
+  width: 100%; 
+  box-sizing: border-box; 
+}
+
+.select-items {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-gap: 10px;
+}
+
+.select-items > {
+  width: auto;
+}

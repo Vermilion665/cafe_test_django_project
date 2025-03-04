@@ -1,0 +1,53 @@
+{% extends 'orders/base.html' %}
+{% load static %}
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'css/order.css'%}" type="text/css">
+
+<div class='order'>
+<h1>Детали заказа №{{ order.id }}</h1>
+<table class="table table-bordered">
+    <tr>
+        <th>Номер столика:</th>
+        <td>{{ order.table_number }}</td>
+    </tr>
+    <tr>
+        <th>Статус:</th>
+        <td>{{ order.get_status_display }}</td>
+    </tr>
+    <tr>
+        <th>Общая сумма:</th>
+        <td>{{ order.total_price }} руб.</td>
+    </tr>
+</table>
+
+<h2>Заказанные блюда:</h2>
+<table border=2 class="table table-striped-columns">
+    <thead class="table-dark">
+        <tr>
+            <th>Название блюда</th>
+            <th>Цена</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in order.items.all %}
+        <tr>
+            <td>{{ item.dish_name }}</td>
+            <td>{{ item.price }} руб.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<h2>Изменить статус:</h2>
+<form method="post">
+    {% csrf_token %}
+    <p style="display: inline-flex;align-items: stretch;">
+    {{ form.status }}
+    <button type="submit" class="btn btn-success" id="btn-suc">Сохранить</button>
+    </p>
+    <br>
+    <button type="submit" name="delete" value="delete" class="btn btn-danger">Удалить заказ</button>
+</form>
+</div>
+{% endblock content %}

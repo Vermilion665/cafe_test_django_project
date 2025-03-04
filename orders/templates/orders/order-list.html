@@ -1,7 +1,13 @@
-<h1>Список заказов</h1>
-{% comment %} <a href="{% url 'orders:order-form' %}">Создать заказ</a> {% endcomment %}
+{% extends 'orders/base.html' %}
+{% load static %}
+{% block content %}
 
-<table border="1">    
+<link rel="stylesheet" href="{% static 'css/order.css'%}" type="text/css">
+
+<div class="container" id='or-di'>
+<div class='order'>
+<h1>Список заказов</h1>
+<table border=2 class="table table-striped-columns" id="or-li">    
   <thead>
     <tr>
       <th>ID</th>
@@ -13,23 +19,30 @@
   </thead>
   <tbody>
     {% if orders %}
-        {% for order in orders %}
-          <tr>
-            <td><a href="{% url 'orders:order-detail' %}">{{order.id}}</a></td>
-            <td>{{order.table_number}}</td>
-            <td>
-              <ul>
-                  {% for item in order.items.all %}
-                      <li>{{ item.dish_name }} ({{ item.price }})</li>
-                  {% endfor %}
-              </ul>
-            </td>
-            <td>{{order.total_price}}</td>
-            <td>{{order.get_status_display}}</td>
-          </tr>
-        {% endfor %}
+    {% for order in orders %}
+    <tr>
+      <td><a href="{% url 'orders:order-detail' order.id %}"><button type="submit" class="btn btn-success" id="btn-link">{{order.id}}</button></a></td>
+      <td>{{order.table_number}}</td>
+      <td>
+        <ul>
+          {% for item in order.items.all %}
+          <li>{{ item.dish_name }} ({{ item.price }})</li>
+          {% endfor %}
+        </ul>
+      </td>
+      <td>{{order.total_price}}</td>
+      <td>{{order.get_status_display}}</td>
+    </tr>
+    {% endfor %}
     {% else %}
-      <tr><td colspan="5">Заказов нет.</td></tr>
+    <tr><td colspan="5">Заказов нет.</td></tr>
     {% endif %}
   </tbody>
 </table>
+</div>
+<div>
+</div>
+
+{% comment %} {% include "orders/order-detail.html" %} {% endcomment %}
+</div>
+{% endblock content %}

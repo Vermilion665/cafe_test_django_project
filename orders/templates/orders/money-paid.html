@@ -1,0 +1,16 @@
+{% extends 'orders/base.html' %}
+{% load static %}
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'css/order.css'%}" type="text/css">
+
+<div class="order" style="padding: 15px 30px 30px 30px">
+<h1>Отчет о выручке</h1>
+<table border=2 class="table table-striped-columns">
+    <tr>
+        <td>Общая выручка по оплаченным заказам:</td> 
+        <th>{{ total_money_paid|floatformat:2 }}</th>
+    </tr>
+</table>
+</div>
+{% endblock content %}

@@ -1,4 +1,12 @@
-<table border="1">
+{% extends 'orders/base.html' %}
+{% load static %}
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'css/order.css'%}" type="text/css">
+
+<div class="order" style="padding: 15px 30px 30px 30px">
+    <h1>Список блюд</h1>
+<table border=2 class="table table-striped-columns">
     <th>Название блюда</th>
     <th>Цена</th>
     {% for item in items %}
@@ -8,3 +16,4 @@
     </tr>
     {% endfor %}
 </table>
+{% endblock content %}

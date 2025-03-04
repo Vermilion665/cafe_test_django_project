@@ -1,6 +1,29 @@
-<h1>Создание заказа</h1>
-<form action="{% url 'orders:order-form' %}" method='post'>
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Добавить заказ</button>
-</form>
+{% extends 'orders/base.html' %}
+{% load static %}
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'css/order.css'%}" type="text/css">
+
+<div class="order">
+    <h1>Создание заказа</h1>
+    <form action="{% url 'orders:order-form' %}" method='post'>
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="id_table_number">Номер столика:</label>
+            {{ form.table_number }}
+        </div>
+        <p style="display: inline-flex">
+            <label for="id_status">Статус: </label>
+            {{ form.status }}
+        </p>
+        <div class="mb-3">
+            <labelfor="id_items" class="form-label">Блюда:</label>
+            <div class="select-items" style="text-align: left">
+            {{ form.items }}
+            </div>
+        </div>
+        <br>
+        <button type="submit" class="btn btn-success">Добавить заказ</button>
+    </form>
+</div>
+{% endblock content %}
